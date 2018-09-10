@@ -1,9 +1,0 @@
-lsd_slam_core/src
-lsd_slam_core/src/DataStructures
-lsd_slam_core/src/DepthEstimation
-lsd_slam_core/src/GlobalMapping
-lsd_slam_core/src/IOWrapper
-lsd_slam_core/src/IOWrapper/ROS
-lsd_slam_core/src/Tracking
-lsd_slam_core/src/util
-lsd_slam_viewer/src
