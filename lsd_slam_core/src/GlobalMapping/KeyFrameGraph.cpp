@@ -63,7 +63,7 @@ KFConstraintStruct::~KFConstraintStruct()
 }
 
 KeyFrameGraph::KeyFrameGraph()
-: nextEdgeId(0)
+: nextEdgeId(0), out_var_preview("var_preview")
 {
         /* Latest G2O code
 	typedef g2o::BlockSolver< g2o::BlockSolverTraits<7,3> > BalBlockSolver;
@@ -151,7 +151,8 @@ void KeyFrameGraph::dumpMap(std::string folder)
 
 
 	int i = keyframesAll.size()-1;
-	Util::displayImage("VAR PREVIEW", getVarRedGreenPlot(keyframesAll[i]->idepthVar(),keyframesAll[i]->image(),keyframesAll[i]->width(),keyframesAll[i]->height()));
+	//Util::displayImage("VAR PREVIEW", getVarRedGreenPlot(keyframesAll[i]->idepthVar(),keyframesAll[i]->image(),keyframesAll[i]->width(),keyframesAll[i]->height()));
+	out_var_preview.publishImage(getVarRedGreenPlot(keyframesAll[i]->idepthVar(),keyframesAll[i]->image(),keyframesAll[i]->width(),keyframesAll[i]->height()));
 
 	printf("DUMP MAP (succ %d): dumped %d depthmaps\n", succ,  (int)keyframesAll.size());
 

@@ -24,6 +24,7 @@
 #include <stdio.h>
 #include <iostream>
 #include "util/SophusUtil.h"
+#include "IOWrapper/OutputImageStream.h"
 
 
 namespace lsd_slam
@@ -70,6 +71,8 @@ private:
 	Frame* resultKF;
 	int resultFrameID;
 	SE3 resultFrameToKeyframe;
+	
+	OutputImageStream out_stream;
 
 
 	void threadLoop(int idx);

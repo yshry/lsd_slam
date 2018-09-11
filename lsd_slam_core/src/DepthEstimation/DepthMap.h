@@ -24,6 +24,7 @@
 #include "util/settings.h"
 #include "util/IndexThreadReduce.h"
 #include "util/SophusUtil.h"
+#include "IOWrapper/OutputImageStream.h"
 
 
 
@@ -124,7 +125,8 @@ private:
 	DepthMapPixelHypothesis* currentDepthMap;
 	int* validityIntegralBuffer;
 
-	
+	OutputImageStream out_stereo_keyframe;
+	OutputImageStream out_stereo_reference;
 
 	// ============ internal functions ==================================================
 	// does the line-stereo seeking.

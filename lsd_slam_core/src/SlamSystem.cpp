@@ -50,7 +50,7 @@ using namespace lsd_slam;
 
 
 SlamSystem::SlamSystem(int w, int h, Eigen::Matrix3f K, bool enableSLAM)
-: SLAMEnabled(enableSLAM), relocalizer(w,h,K)
+: SLAMEnabled(enableSLAM), relocalizer(w,h,K), out_stream("DebugDepth")
 {
 	if(w%16 != 0 || h%16!=0)
 	{
@@ -685,8 +685,11 @@ void SlamSystem::debugDisplayDepthMap()
 	if(onSceenInfoDisplay)
 		printMessageOnCVImage(map->debugImageDepth, buf1, buf2);
 	if (displayDepthMap)
-		Util::displayImage( "DebugWindow DEPTH", map->debugImageDepth, false );
-
+	{
+		//Util::displayImage( "DebugWindow DEPTH", map->debugImageDepth, false );
+	  out_stream.publishImage(map->debugImageDepth);
+	}
+	
 	int pressedKey = Util::waitKey(1);
 	handleKey(pressedKey);
 }

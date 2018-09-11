@@ -27,6 +27,7 @@
 #include <g2o/core/sparse_optimizer.h>
 #include "util/SophusUtil.h"
 #include "deque"
+#include "IOWrapper/OutputImageStream.h"
 
 
 namespace lsd_slam
@@ -75,6 +76,7 @@ struct KFConstraintStruct
 	float reciprocalConsistency;
 
 	int idxInAllEdges;
+
 };
 
 
@@ -184,6 +186,8 @@ private:
 
 
 	int nextEdgeId;
+		
+	OutputImageStream out_var_preview;
 };
 
 }

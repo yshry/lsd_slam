@@ -38,7 +38,8 @@ namespace lsd_slam
 
 
 
-DepthMap::DepthMap(int w, int h, const Eigen::Matrix3f& K)
+DepthMap::DepthMap(int w, int h, const Eigen::Matrix3f& K) 
+: out_stereo_keyframe("stereo_key_frame"), out_stereo_reference("stereo_reference_frame")
 {
 	width = w;
 	height = h;
@@ -1168,8 +1169,10 @@ void DepthMap::updateKeyframe(std::deque< std::shared_ptr<Frame> > referenceFram
 
 	if(plotStereoImages)
 	{
-		Util::displayImage( "Stereo Key Frame", debugImageHypothesisHandling, false );
-		Util::displayImage( "Stereo Reference Frame", debugImageStereoLines, false );
+		//Util::displayImage( "Stereo Key Frame", debugImageHypothesisHandling, false );
+		//Util::displayImage( "Stereo Reference Frame", debugImageStereoLines, false );
+	  out_stereo_keyframe.publishImage(debugImageHypothesisHandling);
+	  out_stereo_reference.publishImage(debugImageStereoLines);
 	}
 
 

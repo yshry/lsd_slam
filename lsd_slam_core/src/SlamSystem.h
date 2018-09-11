@@ -27,6 +27,7 @@
 #include "util/settings.h"
 #include "IOWrapper/Timestamp.h"
 #include "opencv2/core/core.hpp"
+#include "IOWrapper/OutputImageStream.h"
 
 #include "util/SophusUtil.h"
 
@@ -228,6 +229,8 @@ private:
 
 	bool depthMapScreenshotFlag;
 	std::string depthMapScreenshotFilename;
+	
+	OutputImageStream out_stream;
 
 
 	/** Merges the current keyframe optimization offset to all working entities. */
@@ -270,6 +273,7 @@ private:
 	void optimizationThreadLoop();
 
 
+	
 	
 };
 

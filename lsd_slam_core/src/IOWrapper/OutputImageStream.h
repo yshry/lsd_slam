@@ -1,3 +1,5 @@
+#pragma once
+
 #include <ros/ros.h>
 #include <opencv2/opencv.hpp>
 #include <image_transport/image_transport.h>

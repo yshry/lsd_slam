@@ -28,6 +28,7 @@ namespace lsd_slam
 
 
 Relocalizer::Relocalizer(int w, int h, Eigen::Matrix3f K)
+: out_stream("debugwindow_depth")
 {
 	for(int i=0;i<RELOCALIZE_THREADS;i++)
 		running[i] = false;
@@ -86,8 +87,11 @@ void Relocalizer::updateCurrentFrame(std::shared_ptr<Frame> currentFrame)
 //			currentFrame->id(), nextRelocIDX, maxRelocIDX);
 
 	if (displayDepthMap)
-		Util::displayImage( "DebugWindow DEPTH", cv::Mat(currentFrame->height(), currentFrame->width(), CV_32F, currentFrame->image())*(1/255.0f), false );
-
+	{
+		//Util::displayImage( "DebugWindow DEPTH", cv::Mat(currentFrame->height(), currentFrame->width(), CV_32F, currentFrame->image())*(1/255.0f), false );
+	  out_stream.publishImage(cv::Mat(currentFrame->height(), currentFrame->width(), CV_32F, currentFrame->image())*(1/255.0f));
+	}
+	
 	int pressedKey = Util::waitKey(1);
 	handleKey(pressedKey);
 }
